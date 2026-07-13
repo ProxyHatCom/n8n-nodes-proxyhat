@@ -1,0 +1,59 @@
+{
+  "name": "n8n-nodes-proxyhat",
+  "version": "0.1.0",
+  "description": "Route n8n HTTP Request nodes through ProxyHat residential proxies — rotating IPs, geo-targeting, and sticky sessions, no code.",
+  "keywords": [
+    "n8n-community-node-package",
+    "n8n",
+    "proxyhat",
+    "proxy",
+    "residential-proxy",
+    "proxy-rotation",
+    "web-scraping"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/ProxyHatCom/n8n-nodes-proxyhat#readme",
+  "author": "ProxyHat",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ProxyHatCom/n8n-nodes-proxyhat.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ProxyHatCom/n8n-nodes-proxyhat/issues"
+  },
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc && node scripts/build-icons.mjs",
+    "lint": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "prepublishOnly": "npm run build"
+  },
+  "files": [
+    "dist"
+  ],
+  "n8n": {
+    "n8nNodesApiVersion": 1,
+    "credentials": [
+      "dist/credentials/ProxyHatApi.credentials.js"
+    ],
+    "nodes": [
+      "dist/nodes/ProxyHat/ProxyHat.node.js"
+    ]
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "proxyhat": "^0.2.0"
+  },
+  "peerDependencies": {
+    "n8n-workflow": "*"
+  },
+  "devDependencies": {
+    "@types/node": "^20.19.43",
+    "n8n-workflow": "^1.60.0",
+    "typescript": "^5.4.0",
+    "vitest": "^2.0.0"
+  }
+}
