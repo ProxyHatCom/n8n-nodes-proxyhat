@@ -1,4 +1,9 @@
-import type { ICredentialType, INodeProperties } from 'n8n-workflow';
+import type {
+	IAuthenticateGeneric,
+	ICredentialTestRequest,
+	ICredentialType,
+	INodeProperties,
+} from 'n8n-workflow';
 
 export class ProxyHatApi implements ICredentialType {
 	name = 'proxyHatApi';
@@ -64,4 +69,26 @@ export class ProxyHatApi implements ICredentialType {
 			displayOptions: { show: { authType: ['usernamePassword'] } },
 		},
 	];
+
+	// Injects the account API key as a Bearer token. Only used by the apiKey
+	// auth mode; in usernamePassword mode `apiKey` is empty and this is a no-op.
+	authenticate: IAuthenticateGeneric = {
+		type: 'generic',
+		properties: {
+			headers: {
+				Authorization: '=Bearer {{$credentials.apiKey}}',
+			},
+		},
+	};
+
+	// "Test credential" button. Validates the account API key against the
+	// management API — a 200 from /sub-users means the key is good. This only
+	// applies to the apiKey mode; the gateway username/password mode has no
+	// account-API surface to test against.
+	test: ICredentialTestRequest = {
+		request: {
+			baseURL: 'https://api.proxyhat.com/v1',
+			url: '/sub-users',
+		},
+	};
 }
