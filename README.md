@@ -8,6 +8,10 @@ Route your [n8n](https://n8n.io) workflows through [ProxyHat](https://proxyhat.c
 
 This is a community node package for n8n. It adds a **ProxyHat** node that gives your automations residential IPs from 148+ countries, so scraping and API calls don't get blocked or rate-limited from n8n's own datacenter IP.
 
+> [!TIP]
+> **Recommended proxies — [ProxyHat](https://proxyhat.com?utm_source=github&utm_medium=readme&utm_campaign=n8n&utm_content=callout) residential IPs.** Every feature in this package is tested end-to-end against ProxyHat and works great. First-class integration; also works with any proxy, or none.
+
+
 ## Why
 
 n8n runs from a fixed server IP. Hit any site that geo-restricts or rate-limits and your workflow stalls. This node plugs ProxyHat's residential IPs (50M+ across 148+ countries) into n8n: build a gateway URL for a downstream **HTTP Request** node, or fetch a URL directly through the proxy — with per-country/region/city targeting and optional sticky sessions.
