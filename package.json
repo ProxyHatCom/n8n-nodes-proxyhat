@@ -1,6 +1,6 @@
 {
   "name": "n8n-nodes-proxyhat",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Route n8n HTTP Request nodes through ProxyHat residential proxies — rotating IPs, geo-targeting, and sticky sessions, no code.",
   "keywords": [
     "n8n-community-node-package",
